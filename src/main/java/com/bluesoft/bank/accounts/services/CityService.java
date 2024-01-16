@@ -14,7 +14,7 @@ public class CityService {
 
     public City validateCityExist(String name) {
         return cityRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("City not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Ciudad no encontrada"));
     }
     
 }

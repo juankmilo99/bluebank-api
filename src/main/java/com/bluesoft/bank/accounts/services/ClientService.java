@@ -20,7 +20,7 @@ public class ClientService {
 
     public Client validateClientExist(String documentNumber) {
         return clientRepository.findByIdentifier(documentNumber)
-                .orElseThrow(() -> new EntityNotFoundException("Client not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Cliente no encontrado"));
     }
 
     public List<ClientTransactionCountDto> getClientTransactionCountsForMonth(int year, int month) {

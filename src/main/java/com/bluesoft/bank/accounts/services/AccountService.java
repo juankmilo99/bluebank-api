@@ -21,10 +21,10 @@ public class AccountService {
         Client client = clientService.validateClientExist(documentNumber);
 
         Account account = accountRepository.findById(accountNumber)
-                .orElseThrow(() -> new EntityNotFoundException("Account not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Cuenta no encontrada"));
 
         if (!account.getClient().equals(client)) {
-            throw new IllegalArgumentException("Account does not belong to the specified client");
+            throw new IllegalArgumentException("La cuenta no pertenece al cliente especificado");
         }
 
         return account;
@@ -37,7 +37,7 @@ public class AccountService {
     public BalanceResponse getBalanceByAccountAndDocument(Long accountNumber, String documentNumber) {
         Account account = accountRepository
                 .findByIdAndClientIdentifier(accountNumber, documentNumber)
-                .orElseThrow(() -> new EntityNotFoundException("No account found for the specified account number and document number."));
+                .orElseThrow(() -> new EntityNotFoundException("No se encontró ninguna cuenta para el número de cuenta y el número de documento especificados."));
 
         return new BalanceResponse(account.getBalance());
     }

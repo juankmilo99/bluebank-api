@@ -62,7 +62,7 @@ public class TransactionService {
         if (!withdrawal.haveSufficientBalance()) {
             withdrawal.setStatus("Reject");
             movementRepository.save(withdrawal);
-            throw new InsufficientBalanceException("Insufficient funds for withdrawal");
+            throw new InsufficientBalanceException("Saldo insuficiente para retirar.");
         }
     }
 }
